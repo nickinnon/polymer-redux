@@ -1,6 +1,6 @@
 # \<polymer-redux-demo\>
 
-Polymer with Redux
+Polymer with Redux playground. The purpose of this project is to make experimental use of Polymer and redux without affecting any mission critical code.
 
 ## Install Global Dependencies
 1. NPM or Yarn
