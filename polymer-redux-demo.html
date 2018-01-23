@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="polymer-redux-demo">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!!</h2>
+  </template>
+
+  <script>
+    /**
+     * `polymer-redux-demo`
+     * Polymer with Redux
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PolymerReduxDemo extends Polymer.Element {
+      static get is() { return 'polymer-redux-demo'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'foo polymer-redux-demo'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(PolymerReduxDemo.is, PolymerReduxDemo);
+  </script>
+</dom-module>

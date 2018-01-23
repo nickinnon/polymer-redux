@@ -1,0 +1,16 @@
+{
+  "name": "polymer-redux-demo",
+  "version": "1.0.0",
+  "description": "Polymer with Redux",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "polymer serve --port 8081 | npm run watch",
+    "watch": "browser-sync start --proxy localhost:8081 --startPath \"components/polymer-redux-demo\" --files \"**/*.html\"",
+    "test": "test"
+  },
+  "author": "nickinnon",
+  "license": "MIT"
+}
