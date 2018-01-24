@@ -1,0 +1,41 @@
+<link rel="import" href="../../polymer/polymer-element.html" />
+<link rel="import" href="redux-store.html" />
+<!-- <link rel="import" href="bower_components/polymer-redux/polymer-redux.html" /> -->
+
+<dom-module id="app-counter">
+  <template>
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+
+    </template>
+
+  <script>
+    class AppCounter extends Polymer.Element {
+      static get is() {
+        return 'app-counter';
+      }
+
+      // static get properties() {
+      //   return {
+      //     prop1: {
+      //       type: String,
+      //       value: 'foo app-counter'
+      //     }
+      //   };
+      // }
+
+      // static get observers() {
+      //   return [
+      //     ''
+      //   ]
+      // }
+
+    }
+
+    window.customElements.define(AppCounter.is, AppCounter);
+  </script>
+
+</dom-module>

@@ -24,13 +24,11 @@ $ bower install
 ```
 
 ## Viewing the Element
-
 ```
 $ npm run dev
 ```
 
 ## Running Tests
-
 ```
 $ polymer test
 ```

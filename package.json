@@ -12,5 +12,8 @@
     "test": "test"
   },
   "author": "nickinnon",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "redux": "^3.7.2"
+  }
 }
