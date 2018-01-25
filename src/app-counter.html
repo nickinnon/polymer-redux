@@ -1,6 +1,5 @@
-<link rel="import" href="../../polymer/polymer-element.html" />
+<link rel="import" href="../../polymer/polymer.html" />
 <link rel="import" href="redux-store.html" />
-<!-- <link rel="import" href="bower_components/polymer-redux/polymer-redux.html" /> -->
 
 <dom-module id="app-counter">
   <template>
@@ -10,31 +9,74 @@
         }
       </style>
 
+      <h1>
+        hello [[stateProp]]
+      </h1>
+      <!-- polymer2 requires tap handlers to be inherited -->
+      <button on-click="testDispatch">Test</button>
     </template>
 
   <script>
-    class AppCounter extends Polymer.Element {
+    class AppCounter extends ReduxBehavior(Polymer.Element) {
       static get is() {
         return 'app-counter';
       }
 
-      // static get properties() {
-      //   return {
-      //     prop1: {
-      //       type: String,
-      //       value: 'foo app-counter'
-      //     }
-      //   };
-      // }
+      static get behaviors() {
+        // might not need this?
+        return [ReduxBehavior];
+      }
 
-      // static get observers() {
-      //   return [
-      //     ''
-      //   ]
-      // }
+      static get actions() {
+        return {
+          addFriend(payload) {
+            return {
+              type: 'ADD_FRIEND',
+              payload
+            };
+          }
+        };
+      }
 
+      static get properties() {
+        return {
+          stateProp: {
+            type: Array,
+            value: ['foo', 'bar'],
+            statePath: 'friends',
+            observer: '_onChange'
+          }
+        };
+      }
+
+      ready() {
+        super.ready();
+        console.log(`App-counter is ready.`);
+        console.log(this, this.stateProp);
+        // this.testDispatch();
+      }
+
+      _onChange(e) {
+        console.log('On Change Listener');
+        console.log(e);
+      }
+
+      testDispatch(e) {
+        /*
+         * Can use Action Creators
+         */
+        this.dispatch('addFriend', ' friendActionPrototype');
+
+        /*
+         * Can dispatch the object literal
+         */
+        this.dispatch({
+            type: 'ADD_FRIEND',       // Key must be 'type'
+            payload: ' aDifferentGuy' // Key must match reducer
+          }
+        );
+      }
     }
-
     window.customElements.define(AppCounter.is, AppCounter);
   </script>
 

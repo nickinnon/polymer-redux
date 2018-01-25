@@ -5,7 +5,7 @@
   console.log(Redux);
 
   const initialState = {
-    friends: []
+    friends: ['someGuy']
   };
 
   const reducer = (state, action) => {
@@ -14,11 +14,11 @@
     switch (action.type) {
       case 'ADD_FRIEND':
         const friends = state.friends.slice(0);
-        friends.push(action.friend);
+        friends.push(action.payload);
         return Object.assign({}, state, {friends: friends});
     }
   }
 
   const store = Redux.createStore(reducer);
-  const ReduxBehavior = PolymerRedux(store);
+  const ReduxBehavior = PolymerRedux(store); // use to extend components
 </script>
