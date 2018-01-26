@@ -24,7 +24,7 @@
 
       static get behaviors() {
         // might not need this?
-        return [ReduxBehavior];
+        // return [ReduxBehavior];
       }
 
       static get actions() {
@@ -70,11 +70,11 @@
         /*
          * Can dispatch the object literal
          */
-        this.dispatch({
-            type: 'ADD_FRIEND',       // Key must be 'type'
-            payload: ' aDifferentGuy' // Key must match reducer
-          }
-        );
+        // this.dispatch({
+        //     type: 'ADD_FRIEND',       // Key must be 'type'
+        //     payload: ' aDifferentGuy' // Key must match reducer
+        //   }
+        // );
       }
     }
     window.customElements.define(AppCounter.is, AppCounter);

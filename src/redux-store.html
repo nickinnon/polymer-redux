@@ -4,21 +4,34 @@
   console.log('foo');
   console.log(Redux);
 
+  const friendsReducer = (state=['foo'], action) => {
+   // switch(action.type){
+   //   case "ADD_FRIEND": {
+   //     state = state.concat(action.payload);
+   //   }
+   // }
+   // return state
+
+   const actions = {
+     ADD_FRIEND: () => {
+       return state.concat(action.payload);
+     }
+   }
+
+   if (actions[action.type]) {
+    state = actions[action.type].call();
+   }
+   return state;
+  }
+
   const initialState = {
     friends: ['someGuy']
   };
 
-  const reducer = (state, action) => {
-    if (!state) return initialState;
+  const reducers = Redux.combineReducers({
+    friends: friendsReducer
+  })
 
-    switch (action.type) {
-      case 'ADD_FRIEND':
-        const friends = state.friends.slice(0);
-        friends.push(action.payload);
-        return Object.assign({}, state, {friends: friends});
-    }
-  }
-
-  const store = Redux.createStore(reducer);
+  const store = Redux.createStore(reducers, initialState);
   const ReduxBehavior = PolymerRedux(store); // use to extend components
 </script>
